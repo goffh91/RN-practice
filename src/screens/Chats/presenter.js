@@ -7,9 +7,9 @@ const Presenter = props => {
 
     return (
         <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Home</Text>
+            <Text>Chats</Text>
             <Button
-                title="go to detail"
+                title="detail"
                 onPress={() => navigation.navigate('Detail')}
             />
             <Text>{JSON.stringify(params)}</Text>
