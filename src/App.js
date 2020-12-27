@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { TabNavigationOptions } from './styles/navigation';
+import { TabNavigationOptions, TabBarOptions } from './styles/navigation';
 import ChatListScreen from './screens/Chats';
 import FriendListScreen from './screens/Friends';
 import SettingScreen from './screens/Setting';
@@ -20,6 +20,7 @@ const App = () => {
                     <Tab.Navigator
                         initialRouteName={"Home"}
                         screenOptions={TabNavigationOptions}
+                        tabBarOptions={TabBarOptions}
                     >
                         <Tab.Screen name={"Chats"} component={ChatListScreen}/>
                         <Tab.Screen name={"Friends"} component={FriendListScreen}/>
