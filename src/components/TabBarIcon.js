@@ -11,16 +11,20 @@ const TabBarIcon = ({ name, focused }) => {
     let iconName;
     
     switch (name) {
-        case 'Friends':
+        case 'Friend':
             iconName = 'people';
             break;
         
-        case 'Chats':
+        case 'Chat':
             iconName = 'chatbox-ellipses';
             break;
 
-        case 'Setting':
-            iconName = 'settings-sharp';
+        case 'Explore':
+            iconName = 'earth-sharp';
+            break;
+
+        case 'Profile':
+            iconName = 'ellipsis-horizontal';
             break;
 
         default:

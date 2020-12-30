@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     tabNavActiveColor,
     tabNavInActiveColor,
@@ -5,6 +6,7 @@ import {
     tabNavInActiveBgColor,
 } from '../styles/theme';
 import TabBarIcon from '../components/TabBarIcon';
+import DrawerButton from './DrawerButton';
 
 export const TabNavigationOptions = ({ route }) => {    
     return {
@@ -34,5 +36,12 @@ export const StackNavigationOptions = ({ route }) => {
 }
 
 export const StackScreenOptions = ({ route }) => {
-    return {};
+    return {
+        // headerRight: () => <DrawerButton/>
+    };
+}
+
+export const DrawerStyle = {
+    backgroundColor: '#c6cbef',
+    width: 200
 }
