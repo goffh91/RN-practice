@@ -1,14 +1,20 @@
 import React from 'react';
 import { Text, Button, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CustomWebView from '../../components/CustomWebView';
+import NavigationView from '../../components/NavigationView';
 
 const Presenter = props => {
     const { navigation, params } = props;
 
     return (
-        <CustomWebView/>
+        <View style={{ flex: 1, marginTop: 50 }}>
+            <NavigationView/>
+            <CustomWebView
+                navigation={navigation}
+                params={params}
+            />
+        </View>
     );
 }
 
