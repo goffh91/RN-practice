@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { tabNavActiveColor, tabNavInActiveColor } from '../styles/theme';
+import { useTheme } from '@react-navigation/native';
 
 /**
  * @ref https://oblador.github.io/react-native-vector-icons
@@ -9,6 +10,7 @@ import { tabNavActiveColor, tabNavInActiveColor } from '../styles/theme';
 const TabBarIcon = ({ name, focused }) => {
 
     let iconName;
+    const { colors } = useTheme();
     
     switch (name) {
         case 'Friend':
@@ -36,8 +38,8 @@ const TabBarIcon = ({ name, focused }) => {
             size={26}
             name={iconName}
             color={focused ?
-                tabNavActiveColor :
-                tabNavInActiveColor
+                colors.activeTab :
+                colors.inactiveTab
             }
         />
     );

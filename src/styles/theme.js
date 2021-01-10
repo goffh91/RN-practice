@@ -1,4 +1,33 @@
-export const tabNavActiveColor = '#6D6CFF';
-export const tabNavInActiveColor = '#777';
+import { DarkTheme, DefaultTheme } from '@react-navigation/native';
+
 export const tabNavActiveBgColor = '#fff';
 export const tabNavInActiveBgColor = '#fff';
+
+export default {
+    light: {
+        ...DefaultTheme,
+        colors: {
+            ...DefaultTheme.colors,
+            primary: '#B0BEC5',
+            secondary: '#29434E',
+            error: '#D32F2F',
+            text: '#212121',
+            border: '#212121',
+            activeTab: '#1976D2',
+            inactiveTab: '#757575',
+        },
+    },
+    dark: {
+        ...DarkTheme,
+        colors: {
+            ...DarkTheme.colors,
+            primary: '#212121',
+            secondary: '#29434E',
+            error: '#D32F2F',
+            text: '#FFFFFF',
+            border: '#FFFFFF',
+            activeTab: '#4FC3F7',
+            inactiveTab: '#FFFFFF',
+        },
+    },
+};

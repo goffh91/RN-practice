@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Alert, Platform, BackHandler } from 'react-native';
 import { WebView } from 'react-native-webview';
+
 import WebViewLoading from './WebViewLoading';
+import WebViewNavigation from './WebViewNavigation';
 
 /**
  * @reference
@@ -16,7 +18,7 @@ const CustomWebView = props => {
 
     const [canGoBack, setCanGoBack] = useState(false);
     const [canGoForward, setCanGoForward] = useState(false);
-    const [currentUrl, setCurrentUrl] = useState('https://m.naver.com');
+    const [currentUrl, setCurrentUrl] = useState('https://app.howtoyak.com');
 
     const backAction = () => {
         if (canGoBack) {
@@ -32,13 +34,19 @@ const CustomWebView = props => {
 
     return (
         <>
+            <WebViewNavigation
+                webView={webView}
+                canGoBack={canGoBack}
+                canGoForward={canGoForward}
+                currentUrl={currentUrl}
+            />
             <WebView
                 ref={webView}
                 source={{ uri: currentUrl }}
                 originWhitelist={['*']}
                 injectedJavaScript={INJECTED_JAVASCRIPT}
                 onShouldStartLoadWithRequest={(request) => {
-                    return request.url.match('naver.com');
+                    return Boolean(request.url.match('howtoyak.com'));
                 }}
       
                 onNavigationStateChange={(navState) => {
@@ -76,14 +84,14 @@ const INJECTED_JAVASCRIPT = `
   (function() {
     const isUIWebView = () => {
         return navigator.userAgent.toLowerCase()
-          .match(/\(ip.*applewebkit(?!.*(version|crios))/)
+          .match(/\(ip.*applewebkit(?!.*(version|crios))/);
     }
 
-    const receiver = isUIWebView() ? window : document
+    const receiver = isUIWebView() ? window : document;
     receiver.addEventListener('message', e => {
-        const event = JSON.parse(e.data)
+        const eventData = JSON.parse(e.data);
         window.ReactNativeWebView.postMessage(
-            JSON.stringify({ event })
+            JSON.stringify({ eventData })
         );
     });
 
