@@ -4,7 +4,7 @@ import * as authTypes from './type';
 export const initialState = {
     loading: false,
     isAuthenticated: false,
-    token: api_token,
+    token: null,
     user: null,
 }
 

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Alert, Platform, BackHandler } from 'react-native';
 import { WebView } from 'react-native-webview';
 
+import { BASE_URL } from '../utils/constants';
 import WebViewLoading from './WebViewLoading';
 import WebViewNavigation from './WebViewNavigation';
 
@@ -18,7 +19,7 @@ const CustomWebView = props => {
 
     const [canGoBack, setCanGoBack] = useState(false);
     const [canGoForward, setCanGoForward] = useState(false);
-    const [currentUrl, setCurrentUrl] = useState('https://app.howtoyak.com');
+    const [currentUrl, setCurrentUrl] = useState(BASE_URL);
 
     const backAction = () => {
         if (canGoBack) {
@@ -46,7 +47,7 @@ const CustomWebView = props => {
                 originWhitelist={['*']}
                 injectedJavaScript={INJECTED_JAVASCRIPT}
                 onShouldStartLoadWithRequest={(request) => {
-                    return Boolean(request.url.match('howtoyak.com'));
+                    return Boolean(request.url.startsWith(BASE_URL));
                 }}
       
                 onNavigationStateChange={(navState) => {
@@ -70,7 +71,7 @@ const CustomWebView = props => {
                 containerStyle={{}}
                 applicationNameForUserAgent={`Kyunwu/${String(Platform.OS).toUpperCase()}`}
                 pullToRefreshEnabled={true}
-                mediaPlaybackRequiresUserAction={false}
+                mediaPlaybackRequiresUserAction={true}
                 automaticallyAdjustContentInsets={false}
                 thirdPartyCookiesEnabled={true}
                 sharedCookiesEnabled={true}

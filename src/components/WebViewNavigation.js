@@ -11,6 +11,14 @@ const WebViewNavigation = props => {
         webView,
     } = props;
 
+    const handleGoBack = e => {
+        if (canGoBack) {
+            webView.current.goBack();
+        } else {
+            navigator.goBack();
+        }
+    }
+
     const mainNavigationUris = [
         '/',
         '/compare',
@@ -21,17 +29,19 @@ const WebViewNavigation = props => {
     return (mainNavigationUris.includes(matchUri)) ? 
         (
             <NavigationWrap>
-                <Text>Main</Text>
+                <Button title={'Home'}/>
             </NavigationWrap>
         ) : (
-            <View>
-                <Text>Sub</Text>
-            </View>
+            <NavigationWrap>
+                <Button title={'Back'} onPress={handleGoBack}/>
+            </NavigationWrap>
         );
 }
 
-const NavigationWrap = styled.View`
+const NavigationWrap = styled(View)`
     height: 50px;
+    align-items: center;
+    justify-content: center;
 `;
 
 export default WebViewNavigation;
